@@ -1,119 +1,219 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GateKeeper - Sistema de Control de Acceso</title>
+    <title>Gatekeeper</title>
     <link rel="stylesheet" href="estilos/style.css">
 </head>
-<body>
-    <div class="login-container card" id="loginForm">
-        <div class="bg"></div>
-        <div class="blob"></div>
-        <h1 class="login-title">GateKeeper</h1>
-        <form onsubmit="handleLogin(event)">
-            <div class="form-group">
-                <label for="username">Usuario</label>
-                <input type="text" id="username" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Contraseña</label>
-                <input type="password" id="password" required>
-            </div>
-            <button type="submit" class="login-button">Ingresar</button>
-        </form>
-    </div>
-    <div class="container card" id="mainContent">
-        <div class="bg"></div>
-        <div class="blob"></div>
-        <div class="header">
-            <h2>GateKeeper</h2>
-            <button class="logout-button" onclick="logout()">Cerrar sesión</button>
-            <div class="form-section">
-                <div>
-                    <div class="form-group">
-                        <input type="text" placeholder="Nombres">
-                    </div>
-                    <div class="form-group">
-                        <select>
-                            <option>Tipo de documento</option>
-                            <option>CC</option>
-                            <option>CE</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" placeholder="Teléfono">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" placeholder="Empresa">
-                    </div>
-                </div>
-                <div>
-                    <div class="form-group">
-                        <input type="text" placeholder="Apellidos">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" placeholder="Documento">
-                    </div>
-                    <div class="form-group">
-                        <select>
-                            <option>Género</option>
-                            <option>Masculino</option>
-                            <option>Femenino</option>
-                            <option>Prefiero no decirlo</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <select>
-                            <option>Oficinas del edificio</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="photo-section">
-                    <div class="photo-placeholder"></div>
-                    <button class="button" id="registerButton">Registrar</button>
-                </div>
-            </div>
-        </div>
-        <div class="visit-details">
-            <h3>Datos de visita</h3>
-            <div class="date-section">
-                <div class="form-group">
-                    <label>Fecha de ingreso</label>
-                    <input type="datetime-local">
-                </div>
-                <div class="form-group">
-                    <label>Fecha de salida</label>
-                    <input type="datetime-local">
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Piso/Oficina</label>
-                <input type="text" value="Oficina del complejo" readonly>
-            </div>
-            <div class="form-group">
-                <label>Comentarios</label>
-                <textarea class="comments"
-                    placeholder="Motivo de la visita&#10;Persona con la que se va a reunir"></textarea>
-            </div>
-        </div>
-    </div>
-    <!-- Error 404 -->
-    <div class="error-container card" id="error404" style="display: none;">
-        <div class="blob"></div>
-        <h1 class="error-title">404</h1>
-        <p class="error-message">Lo sentimos, la página que buscas no existe.</p>
-        <button class="button" onclick="goBack()">Volver</button>
-    </div>
-    <!-- Error 500 -->
-    <div class="error-container card" id="error500" style="display: none;">
-        <div class="blob"></div>
-        <h1 class="error-title">500</h1>
-        <p class="error-message">¡Ups! Ocurrió un error en el servidor.</p>
-        <button class="button" onclick="retry()">Reintentar</button>
-    </div>
 
-    <script src="JS/scrip.js"></script>
+<body>
+    <!-- Inicio de Sesión -->
+<main class="Contenedor_inicio" id="inicio_sesion">
+    <div class="Caja_inicio">
+        <div class="header_caja">
+            <img src="img/Logo Gatekeeper.png" alt="Gatekeeper Logo" class="logo">
+            <h1>Bienvenido</h1>
+        </div>
+        <form onsubmit="Login(event)" class="formulario_inicio">
+            <div class="Usuario">
+                <input type="text" id="Usuario" required>
+                <label for="Usuario">Usuario</label>
+            </div>
+            <div class="Contraseña">
+                <input type="password" id="password" required>
+                <label for="password">Contraseña</label>
+            </div>
+            <div class="formulario_opciones">
+                <label class="checkbox_contenedor">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    Recordarme
+                </label>
+            </div>
+            <button class="Boton_Iniciar_Sesion" type="submit">Iniciar Sesión</button>
+        </form>            
+    </div>
+</main>
+
+    <!-- Empleados -->
+    <main id="empleados" style="display: none;">
+        <header>
+            <div class="contenedor_header">
+                <img src="img/Logo Gatekeeper.png" alt="Logo Gatekeeper" class="icono_home_registro">
+            </div>
+        </header>
+        <section>
+            <form class="formulario_empleados" onsubmit="Register(event)" >
+                <div class="contenedor_form_empleados">
+                    <div class="formulario_empleados">
+                        <a class="Boton_Cerrar_Sesion" href="#" onclick="cerrarSesion()">Cerrar sesión</a>
+                        <h2>Registro</h2>
+                        <img src="img/foto perfil.webp" class="imagen_perfil" />
+                        <br>
+                        <br>
+                        <br>
+                        <div class="form_filas_empleados">
+                            <div class="formulario_columna">
+                                <label for="nombre"></label>
+                                <input type="text" id="nombre" placeholder="Nombres">
+                                
+                                <label for="tipo_documento"></label>
+                                <select class="Seleccionar" id="tipo_documento">
+                                    <option value="">Tipo de documento</option>
+                                    <option value="ti">TI</option>
+                                    <option value="cc">CC</option>
+                                    <option value="ce">CE</option>
+                                </select>
+                                
+                                <label for="hora_ingreso">Hora de ingreso</label>
+                                <input type="time" id="hora_ingreso">
+                                
+                                <label for="oficina_destino">Oficina de destino</label>
+                                <input type="text" id="oficina_destino" placeholder="Oficina de destino">
+                                
+                                <label for="telefono"></label>
+                                <input type="text" id="telefono" placeholder="Teléfono">
+                            </div>
+                            
+                            <div class="formulario_columna">
+                                <label for="apellido"></label>
+                                <input type="text" id="apellido" placeholder="Apellidos">
+                                
+                                <label for="numero_documento"></label>
+                                <input type="text" id="numero_documento" placeholder="Número documento">
+                                
+                                <label for="hora_salida">Hora de salida</label>
+                                <input type="time" id="hora_salida">
+                                
+                                <label for="fecha_ingreso">Fecha ingreso</label>
+                                <input type="date" id="fecha_ingreso" class="fecha_ingreso_estilo">
+                                
+                                <label for="comentarios"></label>
+                                <textarea id="comentarios" placeholder="Comentarios"></textarea>
+                            </div>
+                        </div>                        
+                        <div class="formulario_filas">
+                            <button type="submit" class="boton_enviar_empleados">Enviar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </main>
+
+<!--Administrador-->
+<main id="Administrador" style="display: none;">
+    <header>
+        <div class="contenedor_header_admin">
+            <img src="img/Logo Gatekeeper.png" alt="Logo Gatekeeper" class="icono_home_administrador">
+        </div>
+    </header>
+    <section>
+        <div class="contenedor_form_admin">
+            <div class="formulario_admin">
+                <a class="Boton_Cerrar_Sesion" href="#" onclick="cerrarSesion()">Cerrar sesión</a>
+                <br>
+                <br>
+                <br>
+                <h3 class="titulo_seccion" >Agregar usuario</h3>
+                <br>
+                <br>
+                <div class="form_filas_admin">
+                    <div class="formulario_izquierda">
+                        <input type="text" id="nombre_agregar" placeholder="Nombre">
+                        <input type="text" id="usuario_agregar" placeholder="Usuario">
+                        
+                        <label for="cargo"></label>
+                        <select class="Seleccionar" id="cargo">
+                            <option value="">Cargo</option>
+                            <option value="Recepcionista">Recepcionista</option>
+                            <option value="Administrador">Administrador</option>
+                            <option value="Guarda">Guarda</option>
+                        </select>
+                    </div>
+                    <div class="formulario_derecha">
+                        <input type="text" id="apellido_agregar" placeholder="Apellido">
+                        
+                        <br>
+                        <br>    
+                        <button type="submit" class="boton_admin" onclick="AddUser(event)">Guardar</button>
+                    </div>
+                </div>
+                <br>
+                <hr>
+                <br>
+                <h3 class="titulo_seccion" >Editar usuario</h3>
+                <br>
+                <br>
+                <div class="form_filas_admin">
+                    <div class="formulario_izquierda">
+                        <input type="text" id="nombre_editar" placeholder="Nombre">
+
+                        <label for="tipo_usuario_editar"></label>
+                        <select class="Seleccionar" id="tipo_usuario_editar">
+                            <option value="">Cargo</option>
+                            <option value="visitante">Recepcionista</option>
+                            <option value="empleado">Guarda</option>
+                        </select>
+                    </div>
+                    
+                    <div class="formulario_derecha">
+                        <input type="text" id="apellido_editar" placeholder="Apellido">
+                        </select>
+                        
+                        <br>
+                        <br>
+                        <button type="submit" class="boton_admin" onclick="EditUser(event)">Editar</button>
+                    </div>
+                </div>
+                <br>
+                <hr>
+                <br>
+                <h3 class="titulo_seccion" >Eliminar usuario</h3>
+                <br>
+                <br>
+                <div class="form_filas_admin">
+                    <div class="formulario_izquierda">                    
+                        <input type="text" id="nombre_eliminar" placeholder="Nombre">
+
+                        <label for="tipo_usuario_eliminar"></label>
+                        <select class="Seleccionar" id="tipo_usuario_eliminar">
+                            <option value="">Cargo</option>
+                            <option value="visitante">Recepcionista</option>
+                            <option value="empleado">Guarda</option>
+                        </select>
+
+                    </div>
+                    <div class="formulario_derecha">
+                        <input type="text" id="apellido_eliminar" placeholder="Apellido">
+                        <br>
+                        <br>
+                        <button type="submit" class="boton_admin" onclick="DeleteUser(event)">Eliminar</button>
+                    </div>
+                </div>
+                <br>
+                <hr>
+                <br>
+                <button class="boton_guardar_cambios">Guardar Cambios</button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Errores -->
+<div class="E404" id="error404" style="display: none;" >
+    <h1>Error 404: Página no encontrada</h1>
+    <button onclick="goBack()">Volver al inicio</button>
+</div>
+
+<div class="E500" id="error500" style="display: none;">
+    <h1>Error 500: Error interno del servidor</h1>
+    <button onclick="retry()">Reintentar</button>
+</div>
+<script src="JS/scrip.js"></script>
+
 </body>
 
 </html>

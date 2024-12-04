@@ -1,350 +1,745 @@
-.base {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Dancing Script', cursive;
 }
 
 body {
     min-height: 100vh;
-    background: linear-gradient(135deg, #ffffff, #c2caca);
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+}
+
+/*Inicio Sesion*/
+
+/* Estilos del Login */
+.Contenedor_inicio {
+    min-height: calc(100vh - 7rem);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 2rem;
 }
 
-/* Estilos base de las tarjetas */
-.card {
-    position: relative;
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.95);
-    border: none;
-    transition: transform 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
-/* Efectos de burbujas animadas */
-.card::before,
-.card::after {
-    content: '';
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 43%;
-    background: linear-gradient(45deg, #2ea5b4, #669dee);
-    animation: wave 10s infinite linear;
-    z-index: -1;
-}
-
-.card::before {
-    top: -150px;
-    left: -150px;
-    opacity: 0.4;
-}
-
-.card::after {
-    bottom: -150px;
-    right: -150px;
-    opacity: 0.2;
-    animation-delay: -5s;
-}
-
-/* Contenedor de login */
-.login-container {
+.Caja_inicio {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
     padding: 2.5rem;
-    border-radius: 12px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
+    width: 100%;
     max-width: 400px;
-    width: 100%;
-    margin: auto;
-    display: none;
-}
-
-.login-title {
-    text-align: center;
-    color: #000000;
-    margin-bottom: 1.5rem;
-    font-size: 2.5rem;
-    font-weight: bold;
-}
-
-.login-button {
-    width: 100%;
-    padding: 1rem;
-    background: linear-gradient(45deg, #2ea5b4, #669dee);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(102, 157, 238, 0.2);
-}
-
-.login-button:hover {
-    background: linear-gradient(45deg, #669dee, #2ea5b4);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(102, 157, 238, 0.3);
-}
-
-/* Contenedor principal */
-.container {
-    max-width: 850px;
-    width: 100%;
-    margin: 1.5rem auto;
-    padding: 25px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 12px;
-    display: none;
-}
-
-/* Encabezado */
-.header {
-    border-bottom: 2px solid #000000;
-    padding-bottom: 15px;
-    margin-bottom: 20px;
-}
-
-.header h2 {
-    color: #000000;
-    font-size: 2rem;
-    text-align: center;
-}
-
-/* Sección de formulario */
-.form-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-    margin-bottom: 20px;
-    padding: 10px;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 0.9rem;
-    color: #555;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(102, 157, 238, 0.2);
-    border-radius: 5px;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: #2ea5b4;
-    box-shadow: 0 0 15px rgba(46, 165, 180, 0.1);
-}
-
-/* Boton cerrar sesion*/
-.logout-button {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     position: absolute;
-    top: 20px;
-    right: 20px;
-    padding: 10px 20px;
-    background: linear-gradient(45deg, #2ea5b4, #669dee);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(102, 157, 238, 0.2);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.logout-button:hover {
-    background: linear-gradient(45deg, #669dee, #2ea5b4);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(102, 157, 238, 0.3);
+.header_caja {
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
+.logo {
+    width: 120px;
+    margin-bottom: 1rem;
+}
 
+.header_caja h1 {
+    color: #fff;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
 
-/* Sección de foto */
-.photo-section {
+.formulario_inicio {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 15px;
+    gap: 1.5rem;
 }
 
-.photo-placeholder {
-    width: 150px;
-    height: 150px;
-    border: 2px dashed #ccc;
-    border-radius: 10px;
+.Usuario {
+    position: relative;
+}
+
+.Usuario input {
+    width: 100%;
+    padding: 0.8rem;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.Usuario label {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.Usuario input:focus,
+.Usuario input:valid {
+    border-bottom-color: #b3a0ff;
+}
+
+.Usuario input:focus~label,
+.Usuario input:valid~label {
+    top: -5px;
+    font-size: 0.85rem;
+    color: #b3a0ff;
+}
+
+
+.Contraseña {
+    position: relative;
+}
+
+.Contraseña input {
+    width: 100%;
+    padding: 0.8rem;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.Contraseña label {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.Contraseña input,
+.Contraseña input:valid {
+    border-bottom-color: #b3a0ff;
+}
+
+.Contraseña input:focus~label,
+.Contraseña input:valid~label {
+    top: -5px;
+    font-size: 0.85rem;
+    color: #b3a0ff;
+}
+
+.formulario_opciones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Poppins', sans-serif;
+}
+
+.checkbox-contenedor {
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: #e7e7e7;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-.photo-placeholder:hover {
-    border-color: #2ea5b4;
-    color: #2ea5b4;
-}
-
-/* Detalles de visita */
-.visit-details {
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 20px;
-    margin-top: 20px;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(5px);
-    border-radius: 8px;
-}
-
-.visit-details h3 {
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-    color: #000000;
-}
-
-.date-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-bottom: 15px;
-}
-
-.comments {
-    width: 100%;
-    min-height: 100px;
-    resize: vertical;
-    border-radius: 5px;
-}
-
-/* Botón estándar */
-.button {
-    padding: 10px 25px;
-    background: linear-gradient(45deg, #2ea5b4, #669dee);
-    color: white;
-    border: none;
-    border-radius: 6px;
+    gap: 0.5rem;
     cursor: pointer;
-    font-size: 0.9rem;
-    font-weight: bold;
+}
+
+.checkbox-contenedor input[type="checkbox"] {
+    accent-color: #b3a0ff;
+}
+
+.Boton_Iniciar_Sesion {
+    background: #b3a0ff;
+    color: #000;
+    border: none;
+    padding: 1rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(102, 157, 238, 0.2);
+    margin-top: 1rem;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
 }
 
-.button:hover {
-    background: linear-gradient(45deg, #669dee, #2ea5b4);
+.Boton_Iniciar_Sesion :hover {
+    background: #b3a0ff;
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(102, 157, 238, 0.3);
+    box-shadow: 0 5px 15px rgba(255, 167, 38, 0.3);
 }
 
-/* Efecto blob */
-.blob {
+.footer_inicio {
+    text-align: center;
+    margin-top: 2rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Poppins', sans-serif;
+}
+
+.footer_inicio a {
+    color: #b3a0ff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer_inicio a:hover {
+    color: #b3a0ff;
+}
+
+/*responsive inicio de sesion*/
+
+@media (max-width: 480px) {
+    .login-box {
+        padding: 2rem 1.5rem;
+        margin: 1rem;
+    }
+
+    .form-options {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .login-header h1 {
+        font-size: 2rem;
+    }
+}
+
+
+/*EMPLEADOS*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+header {
+    width: 100%;
+    max-width: 1200px;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.contenedor_header img {
+    width: 120px;
+}
+
+.Boton_Cerrar_Sesion {
     position: absolute;
-    background: linear-gradient(45deg, #2ea5b4, #669dee);
-    filter: blur(30px);
-    mix-blend-mode: color-dodge;
-    animation: blob 15s infinite;
-    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
-    width: 200px;
-    height: 200px;
-    opacity: 0.15;
+    top: 50px;
+    right: 20px; 
+    background-color: #b3a0ff;
+    color: #000;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-align: center;
 }
 
-/* Animaciones */
-@keyframes wave {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
+.contenedor_form_empleados {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(80vh - -100px);
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    margin: auto; 
 }
 
-@keyframes blob {
-
-    0%,
-    100% {
-        border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
-        transform: translate(-50%, -50%) rotate(0deg);
-    }
-
-    33% {
-        border-radius: 70% 30% 45% 55% / 55% 45% 55% 45%;
-        transform: translate(-50%, -50%) rotate(120deg);
-    }
-
-    66% {
-        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-        transform: translate(-50%, -50%) rotate(240deg);
-    }
+.imagen_perfil {
+    width: 150px;
+    border-radius: 50%;
+    /* Redondea la imagen */
 }
 
-/* Estado inicial del formulario de login */
-#loginForm {
-    display: block;
+.formulario_empleados h2 {
+    margin-bottom: 1.5rem;
+    color: #b3a0ff;
+    text-align: center;
 }
 
-/* Media queries para responsividad */
+.form_filas_empleados {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    justify-content: space-between;  /* Esto asegura que los elementos se alineen horizontalmente */
+}
+
+.formulario_columna {
+    width: 48%;  /* Esto asegura que las columnas se distribuyan equitativamente en el contenedor */
+}
+
+.formulario_empleados input[type="text"],
+.formulario_empleados input[type="time"],
+.formulario_empleados textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.formulario_empleados input:focus,
+.formulario_empleados textarea:focus {
+    border-color: #b3a0ff;
+}
+
+
+.form_filas_empleados {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    justify-content: space-between; 
+}
+
+.formulario_columna {
+    width: 48%; 
+}
+
+.formulario_empleados input[type="text"],
+.formulario_empleados input[type="time"],
+.formulario_empleados textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.formulario_empleados input:focus,
+.formulario_empleados textarea:focus {
+    border-color: #b3a0ff;
+}
+
+textarea.Comentarios {
+    resize: none;
+}
+
+.fecha_ingreso_estilo {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.fecha_ingreso_estilo::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
+
+.fecha_ingreso_estilo:focus {
+    border-color: #b3a0ff;
+}
+
+
+.contenedor_form_empleados {
+    margin-top: 20px; 
+}
+
+.contenedor_form_admin {
+    margin-top: 20px; 
+}
+
+.form_filas_empleados,
+.form_filas_admin {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+}
+
+.formulario_izquierda,
+.formulario_derecha {
+    width: 48%; 
+}
+
+/* Estilos para los select */
+.Seleccionar {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.Seleccionar:focus {
+    border-color: #b3a0ff;
+    box-shadow: 0 0 5px rgba(179, 160, 255, 0.5); 
+}
+
+
+.Seleccionar option {
+    background-color: #000;
+    color: #fff;
+    padding: 0.5rem;
+}
+
+.Seleccionar::-ms-expand {
+    display: none;
+}
+
+.Seleccionar {
+    appearance: none;
+    background-position: right 1rem center;
+    background-repeat: no-repeat;
+    background-size: 12px;
+    padding-right: 2rem;
+}
+
+.boton_enviar_empleados {
+    background: #b3a0ff;
+    color: #000;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: 500;
+}
+
+.boton_enviar_empleados:hover {
+    background: #9e82e6;
+}
+
+
+/*ADMINISTRADOR*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+}
+
+.contenedor_header_admin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.contenedor_header_admin img {
+    width: 120px;
+}
+
+.h2 {
+    text-align: center;
+}
+
+.Boton_Cerrar_Sesion {
+    position: absolute;
+    top: 50px;
+    right: 20px; /* Cambia este valor para ajustarlo más hacia la izquierda */
+    background-color: #b3a0ff;
+    color: #000;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+
+.Boton_Cerrar_Sesion:hover {
+    background-color: #9e82e6;
+    transform: translateY(-2px);
+}
+
+.contenedor_form_admin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 100px);
+    padding: 2rem;
+}
+
+.formulario_admin {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.form_filas_admin {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+}
+
+.formulario_izquierda,
+.formulario_derecha {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+}
+
+.formulario_izquierda input,
+.formulario_derecha input,
+.formulario_izquierda select,
+.formulario_derecha select {
+    width: 80%;
+    margin: 0 auto; 
+}
+
+.formulario_columna {
+    width: 48%;  
+}
+
+.formulario_admin h2 {
+    color: #b3a0ff;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+}
+
+.titulo_seccion {
+    color: #b3a0ff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+.formulario_admin label {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+.formulario_admin input,
+.formulario_admin select {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.formulario_admin input:focus,
+.formulario_admin select:focus {
+    border-bottom-color: #b3a0ff;
+}
+
+.formulario_admin select {
+    appearance: none;
+    cursor: pointer;
+    background-position: right 1rem center;
+}
+
+.Seleccionar {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.Seleccionar:focus {
+    border-color: #b3a0ff;
+    box-shadow: 0 0 5px rgba(179, 160, 255, 0.5); 
+}
+
+.Seleccionar option {
+    background-color: #000;
+    color: #fff;
+    padding: 0.5rem;
+}
+
+.Seleccionar::-ms-expand {
+    display: none; 
+}
+
+.Seleccionar {
+    background-position: right 1rem center;
+    background-repeat: no-repeat;
+    background-size: 12px;
+    padding-right: 2rem;
+}
+
+.boton_admin,
+.boton_guardar_cambios {
+    background: #b3a0ff;
+    color: #000;
+    border: none;
+    padding: 1.2rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    cursor: pointer;    
+    transition: all 0.3s ease;
+    font-weight: 500;
+    margin-top: 1rem;
+    width: 80%; 
+    margin: 0 auto; 
+}
+
+.boton_admin:hover,
+.boton_guardar_cambios:hover {
+    background: #9e82e6;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 167, 38, 0.3);
+}
+
+.boton_guardar_cambios {
+    width: 100%;
+    margin-top: 2rem;
+}
+
+
 @media (max-width: 768px) {
-    .form-section {
-        grid-template-columns: 1fr;
+    .form_filas_admin {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .formulario_izquierda,
+    .formulario_derecha {
+        width: 100%;
     }
 
-    .date-section {
-        grid-template-columns: 1fr;
+    .contenedor_header_admin {
+        flex-direction: column;
+        align-items: center;
     }
 
-    .container {
-        padding: 15px;
+    .Boton_Cerrar_Sesion {
+        margin-top: 1rem;
     }
 }
 
-.error-container {
+/* Estilo Errores*/
+
+.E404, .E500 {
     padding: 2.5rem;
     border-radius: 12px;
     text-align: center;
     max-width: 400px;
-    width: 100%;
-    margin: auto;
-    background: rgba(255, 255, 255, 0.8); 
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    margin: 5rem auto; 
+    background: rgba(255, 255, 255, 0.1); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
     backdrop-filter: blur(10px); 
     position: relative;
     display: none;
+    animation: fadeIn 0.5s ease-in-out; 
 }
-  
-  .error-title {
-    font-size: 5rem;
-    color: #ff6b6b;
-    margin-bottom: 1rem;
-  }
-  
-  .error-message {
-    font-size: 1.25rem;
-    color: #555;
+
+.E404 h1, .E500 h1 {
+    font-size: 3rem;
+    color:#fff;
     margin-bottom: 1.5rem;
-  }
-  
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.E404 button, .E500 button {
+    background: #b3a0ff;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(179, 160, 255, 0.4);
+}
+
+.E404 button:hover, .E500 button:hover {
+    background: #9e82e6;
+    transform: translateY(-2px); 
+    box-shadow: 0 8px 20px rgba(158, 130, 230, 0.5);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
